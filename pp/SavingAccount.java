@@ -1,12 +1,12 @@
-public class SavingAccount extends Account {
-	private double interest;
-	private double month=0;
+public  class SavingAccount extends Account {
 	SavingAccount(double bal,double interest)
 	{
 		super();
 		super.setBalance(bal);
 		this.interest=interest;
 	}
+	private double interest;
+	private int month=0;
 	@Override
 	public void debit(double money)
 	{
@@ -19,14 +19,29 @@ public class SavingAccount extends Account {
 			super.debit(money);
 		}
 	}
-	@Override
-	public double getWithdrawableAccount(double money)
+	public double getWithdrawableAccount()
 	{
-		double withdrawablemoney=0;
-		return withdrawablemoney;
+		if(month<12)
+		{
+			return 0;
+		}
+		else
+		{
+			return super.getBalance();
+		}
 	}
 	public void passTime(int month)
 	{
+		int interestMonth=0;
 		this.month+=month;
+		if(month>12)
+		{
+			interestMonth=12;
+		}
+		else
+		{
+			interestMonth=month;
+		}
+		super.setBalance(super.getBalance()*(Math.pow((1+interest),interestMonth )));
 	}
 }
