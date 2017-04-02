@@ -30,12 +30,20 @@ public class CheckingAccount extends Account {
 		}
 		else
 		{
+
 			super.setBalance(super.getBalance()*(Math.pow((1+loan_interest),this.month )));
 		}
 	}
-	public boolean isBankrupted(int money)
+	public boolean isBankrupted()
 	{
-		
+		if((super.getBalance()+credit_limit)<0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 }
 

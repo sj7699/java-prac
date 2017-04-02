@@ -4,9 +4,11 @@ public  class SavingAccount extends Account {
 		super();
 		super.setBalance(bal);
 		this.interest=interest;
+		original=bal;
 	}
 	private double interest;
 	private int month=0;
+	private double original;
 	@Override
 	public void debit(double money)
 	{
@@ -32,16 +34,10 @@ public  class SavingAccount extends Account {
 	}
 	public void passTime(int month)
 	{
-		int interestMonth=0;
 		this.month+=month;
-		if(month>12)
+		if(this.month>=12)
 		{
-			interestMonth=12;
+			super.setBalance(original*(Math.pow((1+interest),12)));
 		}
-		else
-		{
-			interestMonth=month;
-		}
-		super.setBalance(super.getBalance()*(Math.pow((1+interest),interestMonth )));
 	}
 }
