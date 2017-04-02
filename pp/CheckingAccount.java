@@ -7,6 +7,7 @@ public class CheckingAccount extends Account {
 		credit_limit=b;
 		interest=c;
 		loan_interest=d;
+		this.month=1;
 	}
 	public double getWithdrawableAccount()
 	{
@@ -23,7 +24,7 @@ public class CheckingAccount extends Account {
 	}
 	public void passTime(int month)
 	{
-		this.month+=month;
+		this.month=month;
 		if(super.getBalance()>=0)
 		{
 			super.setBalance(super.getBalance()*(Math.pow((1+interest),this.month )));
