@@ -1,4 +1,4 @@
-abstract public class Account {
+abstract public class Account implements Valuable {
 	Account()
 	{
 		balance=0.0;

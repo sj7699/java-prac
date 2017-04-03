@@ -1,5 +1,5 @@
-public  class SavingAccount extends Account {
-	SavingAccount(double bal,double interest)
+public  class SavingAccount extends Account{
+	public SavingAccount(double bal,double interest)
 	{
 		super();
 		super.setBalance(bal);
@@ -39,5 +39,13 @@ public  class SavingAccount extends Account {
 		{
 			super.setBalance(original*(Math.pow((1+interest),12)));
 		}
+	}
+	public String toString()
+	{
+		return String.format("SavingAccount_Balance:%.2f \n",super.getBalance());
+	}
+	public double EstimateValue(int month)
+	{
+		return original*(Math.pow((1+interest),month));
 	}
 }
