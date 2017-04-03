@@ -3,12 +3,11 @@ public class CheckingAccount extends Account{
 	private int month;
 	public CheckingAccount(double a,double b,double c,double d)
 	{
-		super();
-		super.setBalance(a);
+		super(a);
 		credit_limit=b;
 		interest=c;
 		loan_interest=d;
-		this.month=014;
+		this.month=0;
 	}
 	public double getWithdrawableAccount()
 	{

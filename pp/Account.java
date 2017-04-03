@@ -1,8 +1,5 @@
 abstract public class Account implements Valuable {
-	Account()
-	{
-		balance=0.0;
-	}
+
 	Account(double money)
 	{
 		balance=money;
