@@ -7,11 +7,11 @@ public  class SavingAccount extends Account{
 	private double interest;
 	private int month=0;
 	@Override
-	public void debit(double money)
+	public void debit(double money) throws Exception
 	{
 		if(month<12)
 		{
-			System.out.println("아직 출금할 수 없습니다.");
+			throw new Exception("아직 출금할수없습니다");
 		}
 		else
 		{

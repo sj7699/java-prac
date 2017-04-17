@@ -17,8 +17,16 @@ abstract public class Account implements Valuable {
 	{
 		balance=money;
 	}
-	public void debit(double money)
+	public void debit(double money) throws Exception
 	{
+		if(money <0)
+		{
+			throw new Exception ("음수입력!");
+		}
+		if(money > balance)
+		{
+			throw new Exception (": Debit amount exceeded account balance.");
+		}
 		balance-=money;
 	}
 	public abstract double getWithdrawableAccount();

@@ -1,4 +1,5 @@
-/*import java.util.Scanner;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 public class AccountTest {
 public static void main(String[] args)
 {
@@ -7,42 +8,26 @@ public static void main(String[] args)
 	//Checking Account
 	Scanner scan = new Scanner(System.in);
 	double amount;
-
-	System.out.printf("Account1 balance: $ %.2f \t현재출금가능액: %.2f\n",account1.getBalance(),account1.getWithdrawableAccount());
-	System.out.println("Enter withdrawal amount for Account1:");
-	amount = scan.nextDouble();
-	account1.debit(amount);
-	System.out.printf("Account1 balance: $ %.2f \t현재출금가능액: %.2f\n",account1.getBalance(),account1.getWithdrawableAccount());
-	if(((CheckingAccount) account1).isBankrupted())
-	{
-		System.out.println("account1 went Bankrupt!");
+	try{
+		System.out.println("Enter deposit amount for Account1: ");
+		amount=scan.nextDouble();
+		account1.debit(amount);
+		System.out.println("Account1 balance: $"+account1.getBalance());
+		System.out.println("Enter the deposit amount for Account2: ");
+		amount=scan.nextDouble();
+		account2.debit(amount);
+		System.out.println("Account1 balance: $"+account1.getBalance());
 	}
-	account1.passTime(1);
-	System.out.printf("Account1 balance: $ %.2f \t현재출금가능액: %.2f\n",account1.getBalance(),account1.getWithdrawableAccount());
-	if(((CheckingAccount) account1).isBankrupted())
-	{
-		System.out.println("account1 went Bankrupt!");
+	catch(InputMismatchException e){
+		System.out.println("예외발생 : 숫자를 입력하세요\n"+e.toString());		
 	}
-	account1.passTime(5);
-	System.out.printf("Account1 balance: $ %.2f \t현재출금가능액: %.2f\n",account1.getBalance(),account1.getWithdrawableAccount());
-	if(((CheckingAccount) account1).isBankrupted())
+	catch(Exception e)
 	{
-		System.out.println("account1 went Bankrupt!");
+		System.out.println("예외발생 "+e.toString());
 	}
-	System.out.printf("Account2 balance: $ %.2f \t현재출금가능액: %.2f\n",account2.getBalance(),account2.getWithdrawableAccount());
-	System.out.println("6 month later!");
-	account2.passTime(6);
-	System.out.printf("Account2 balance: $ %.2f \t현재출금가능액: %.2f\n",account2.getBalance(),account2.getWithdrawableAccount());
-	account2.debit(50);
-	System.out.println("next 6 month later!");
-	account2.passTime(6);
-	System.out.printf("Account2 balance: $ %.2f \t현재출금가능액: %.2f\n",account2.getBalance(),account2.getWithdrawableAccount());
-	System.out.println("next 1 month later!");
-	account2.passTime(1);
-	System.out.printf("Account2 balance: $ %.2f \t현재출금가능액: %.2f\n",account2.getBalance(),account2.getWithdrawableAccount());
-	account2.debit(50);
-	System.out.printf("Account2 balance: $ %.2f \t현재출금가능액: %.2f\n",account2.getBalance(),account2.getWithdrawableAccount());
-
-	
+	finally{
+		account1.passTime(2);
+		System.out.println("2 month later account1 : "+ account1.getBalance());
+	}
 }
-}*/
+}
