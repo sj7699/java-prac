@@ -14,4 +14,8 @@ public class Human implements Valuable {
 	{
 		return Double.POSITIVE_INFINITY;
 	}
+	public double EstimateValue()
+	{
+		return Double.POSITIVE_INFINITY;
+	}
 }

@@ -14,4 +14,8 @@ public class Car implements Valuable{
 	{
 		return this.price*0.8*(Math.pow((0.99),month));
 	}
+	public double EstimateValue()
+	{
+		return this.price*0.8*(Math.pow((0.99),1));
+	}
 }

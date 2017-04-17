@@ -36,6 +36,13 @@ public  class SavingAccount extends Account{
 		}
 		this.month+=month;
 	}
+	public void passTime()
+	{
+		if(this.month<12 && 12<=this.month + 1){
+			super.setBalance(super.getBalance()*(Math.pow((1+interest),12)));
+		}
+		this.month+=1;
+	}
 	public String toString()
 	{
 		return String.format("SavingAccount_Balance:%.2f \n",super.getBalance());
@@ -43,5 +50,9 @@ public  class SavingAccount extends Account{
 	public double EstimateValue(int month)
 	{
 		return super.getBalance()*(Math.pow((1+interest),month));
+	}
+	public double EstimateValue()
+	{
+		return super.getBalance()*(Math.pow((1+interest),1));
 	}
 }

@@ -22,6 +22,32 @@ public class CheckingAccount extends Account{
 		}
 
 	}
+	@Override
+	public void debit(double money) throws Exception
+	{
+		if(money <0)
+		{
+			throw new Exception ("음수입력!");
+		}
+		if(money > this.getWithdrawableAccount())
+		{
+			throw new Exception (": Debit amount exceeded account balance.");
+		}
+		super.setBalance(super.getBalance()-money);
+	}
+	public void passTime()
+	{
+		this.month+=1;
+		if(super.getBalance()>=0)
+		{
+			super.setBalance(super.getBalance()+super.getBalance()*this.interest*1);
+		}
+		else
+		{
+
+			super.setBalance(super.getBalance()+super.getBalance()*this.loan_interest*1);
+		}
+	}
 	public void passTime(int month)
 	{
 		this.month+=month;
@@ -53,6 +79,10 @@ public class CheckingAccount extends Account{
 	public double EstimateValue(int month)
 	{
 		return super.getBalance()+super.getBalance()*this.interest*month;
+	}
+	public double EstimateValue()
+	{
+		return super.getBalance()+super.getBalance()*this.interest*1;
 	}
 }
 
